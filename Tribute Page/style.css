@@ -3,16 +3,49 @@ main {
     border-radius: 0.5%;
     margin: 30px 1px;
     font-family: sans-serif;
+    text-align: center;
+    display: block;
 }
 
 #img-div {
     background-color: white;
     margin: 1em;
-    align-items: center;
+}
+
+#image {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
 }
 
 #tribute-info {
     margin-left: auto;
     margin-right: auto;
     width: 50%;
+}
+
+#tribute-info h2 {
+    display: block;
+    margin: 1em;
+    font-size: 1.5em;
+}
+
+blockquote {
+    font-style: italic;
+    text-align: justify;
+}
+
+p {
+    margin: 0.5em;
+}
+
+li {
+    margin: 0.5em;
+    padding: 0.5em;
+    text-align: left;
+}
+
+figcaption {
+    margin: 1em;
 }
