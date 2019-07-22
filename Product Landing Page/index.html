@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Landing Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <header id="header">
+            <img id="header-img" src="https://icon-icons.com/icons2/534/PNG/96/technical-support-2_icon-icons.com_52811.png" alt="Company logo">
+            <nav id="nav-bar">
+                <ul id="nav-bar-list">
+                    <li><a href="#section-services" class="nav-link">Services</a></li>
+                    <li><a href="#section-working" class="nav-link">How we are working</a></li>
+                    <li><a href="#section-sla" class="nav-link">SLA</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section id="section-services">
+            <div class="row">
+                <div class="left-column"></div>
+                <div class="right-column">
+                    <h2>Our services</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="left-column">
+                    <img src="https://icon-icons.com/icons2/534/PNG/128/shared-hosting_icon-icons.com_52817.png" alt="Local network">
+                </div>
+                <div class="right-column">
+                    <h3>Local network</h3>
+                    <p>A local area network (LAN) is a computer network that interconnects computers within a limited
+                        area such as a residence, school, laboratory, university campus or office building.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="left-column">
+                    <img src="https://icon-icons.com/icons2/534/PNG/128/cloud-network_icon-icons.com_52844.png" alt="Cloud">
+                </div>
+                <div class="right-column">
+                    <h3>Cloud computing</h3>
+                    <p>Cloud computing is the on-demand availability of computer system resources, especially data
+                        storage and computing power, without direct active management by the user.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="left-column">
+                    <img src="https://icon-icons.com/icons2/534/PNG/128/data-connection_icon-icons.com_52841.png" alt="Data base">
+                </div>
+                <div class="right-column">
+                    <h3>Databases</h3>
+                    <p>A database is an organized collection of data, generally stored and accessed electronically
+                        from a computer system.</p>
+                </div>
+            </div>
+        </section>
+        <section id="section-working">
+            <h2>How we are working</h2>
+            <iframe id="video"  src="https://www.youtube-nocookie.com/embed/MwwTfkXk7U0?rel=0&controls=0&showinfo=0"
+                    frameborder="0" allowfullscreen></iframe>
+        </section>
+        <section id="section-sla">
+            <h2>Service Level Agreement</h2>
+            <div id="sla-container">
+                <div class="sla-element">
+                    <h3>High priority</h3>
+                    <ul>
+                        <li>2 hour - Mean Time to Resolve</li>
+                        <li>0.5 hour - Mean Time to Detect</li>
+                    </ul>
+                </div>
+                <div class="sla-element">
+                    <h3>Medium priority</h3>
+                    <ul>
+                        <li>4 hour - Mean Time to Resolve</li>
+                        <li>1 hour - Mean Time to Detect</li>
+                    </ul>
+                </div>
+                <div class="sla-element">
+                    <h3>Low priority</h3>
+                    <ul>
+                        <li>8 hour - Mean Time to Resolve</li>
+                        <li>2 hour - Mean Time to Detect</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <form id="form" action="https://www.freecodecamp.com/email-submit">
+            <h2>Subscribe</h2>
+            <input id="email" name="email" type="email" placeholder="Enter your email address" required>
+            <br><br>
+            <input id="submit" type="submit" value="Submit">
+            <br><br>
+        </form>
+    </main>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+</html>
