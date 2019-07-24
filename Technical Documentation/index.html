@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Technical Documentation Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav id="navbar">
+        <header>Introduction to Django models</header>
+        <ul id="navbar-list">
+            <li><a href="#models" class="nav-link">Models</a></li>
+            <li><a href="#quick_example" class="nav-link">Quick example</a></li>
+            <li><a href="#using_models" class="nav-link">Using models</a></li>
+            <li><a href="#fields" class="nav-link">Fields</a></li>
+            <li><a href="#field_types" class="nav-link">Field types</a></li>
+        </ul>
+    </nav>
+    <main id="main-doc">
+        <section id="models" class="main-section">
+            <header>
+                Models
+            </header>
+            <p>A model is the single, definitive source of information about your data. It contains the essential
+                fields and behaviors of the data you’re storing. Generally, each model maps to a single database
+                table.</p>
+            <p>The basics:</p>
+            <ul>
+                <li>Each model is a Python class that subclasses django.db.models.Model.</li>
+                <li>Each attribute of the model represents a database field.</li>
+                <li>With all of this, Django gives you an automatically-generated database-access API.</li>
+            </ul>
+        </section>
+        <hr>
+        <section id="quick_example" class="main-section">
+            <header>
+                Quick example
+            </header>
+            <p>This example model defines a Person, which has a first_name and last_name:</p>
+            <div class="code-box"><code>
+                from django.db import models <br><br>
+                &nbsp &nbsp class Person(models.Model): <br>
+                &nbsp &nbsp first_name = models.CharField(max_length=30) <br>
+                &nbsp &nbsp last_name = models.CharField(max_length=30)
+            </code></div>
+            <p>first_name and last_name are fields of the model. Each field is specified as a class attribute, and each
+                attribute maps to a database column.</p>
+            <p>The above Person model would create a database table like this:</p>
+            <div class="code-box"><code>
+                CREATE TABLE myapp_person (<br>
+                &nbsp &nbsp "id" serial NOT NULL PRIMARY KEY,<br>
+                &nbsp &nbsp "first_name" varchar(30) NOT NULL,<br>
+                &nbsp &nbsp "last_name" varchar(30) NOT NULL<br>
+                );
+            </code></div>
+            <p>The above Person model would create a database table like this:</p>
+            <ul>
+                <li>The name of the table, myapp_person, is automatically derived from some model metadata but can be
+                    overridden. See Table names for more details.</li>
+                <li>An id field is added automatically, but this behavior can be overridden. See Automatic primary
+                    key fields.</li>
+                <li>The CREATE TABLE SQL in this example is formatted using PostgreSQL syntax, but it’s worth noting
+                    Django uses SQL tailored to the database backend specified in your settings file.</li>
+            </ul>
+        </section>
+        <hr>
+        <section id="using_models" class="main-section">
+            <header>
+                Using models
+            </header>
+            <p>Once you have defined your models, you need to tell Django you’re going to use those models. Do this by
+                editing your settings file and changing the INSTALLED_APPS setting to add the name of the module that
+                contains your models.py.</p>
+            <p>For example, if the models for your application live in the module myapp.models (the package structure
+                that is created for an application by the manage.py startapp script), INSTALLED_APPS should read, in
+                part:</p>
+            <div class="code-box"><code>
+                INSTALLED_APPS = [<br>
+                &nbsp &nbsp #...<br>
+                &nbsp &nbsp 'myapp',<br>
+                &nbsp &nbsp #...<br>
+                ]
+            </code></div>
+            <p>When you add new apps to INSTALLED_APPS, be sure to run manage.py migrate, optionally making migrations
+                for them first with manage.py makemigrations.</p>
+        </section>
+        <hr>
+        <section id="fields" class="main-section">
+            <header>
+                Fields
+            </header>
+            <p>The most important part of a model – and the only required part of a model – is the list of database
+                fields it defines. Fields are specified by class attributes. Be careful not to choose field names that
+                conflict with the models API like clean, save, or delete.</p>
+            <p>Example:</p>
+            <div class="code-box"><code>
+                from django.db import models<br><br>
+                class Musician(models.Model):<br>
+                &nbsp &nbsp first_name = models.CharField(max_length=50)<br>
+                &nbsp &nbsp last_name = models.CharField(max_length=50)<br>
+                &nbsp &nbsp instrument = models.CharField(max_length=100)<br><br>
+                class Album(models.Model):<br>
+                &nbsp &nbsp artist = models.ForeignKey(Musician, on_delete=models.CASCADE)<br>
+                &nbsp &nbsp name = models.CharField(max_length=100)<br>
+                &nbsp &nbsp release_date = models.DateField()<br>
+                &nbsp &nbsp num_stars = models.IntegerField()
+            </code></div>
+        </section>
+        <hr>
+        <section id="field_types" class="main-section">
+            <header>
+                Field types
+            </header>
+            <p>Each field in your model should be an instance of the appropriate Field class. Django uses the field
+                class types to determine a few things:</p>
+            <ul>
+                <li>The column type, which tells the database what kind of data to store (e.g. INTEGER, VARCHAR,
+                    TEXT).</li>
+                <li>The default HTML widget to use when rendering a form field (e.g. <code>&ltinput type="text"&gt,
+                    &ltselect&gt</code>).</li>
+                <li>The minimal validation requirements, used in Django’s admin and in automatically-generated
+                    forms.</li>
+            </ul>
+            <p>Django ships with dozens of built-in field types; you can find the complete list in the model field
+                reference. You can easily write your own fields if Django’s built-in ones don’t do the trick; see
+                Writing custom model fields.</p>
+        </section>
+    </main>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+</html>
