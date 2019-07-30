@@ -3,21 +3,15 @@ const ROMAN = ['I','IV','V','IX','X','XL','L','XC','C','CD','D','CM','M'];
 
 function convertToRoman(number) {
     if(!number) return '';
-
     let ret = '';
     let i = ARAB.length - 1;
-    while(number > 0)
-    {
-        if(number >= ARAB[i])
-        {
+    while(number > 0){
+        if(number >= ARAB[i]){
             ret += ROMAN[i];
             number -= ARAB[i];
-        }
-        else
-        {
+        } else {
             i--;
         }
-
     }
     return ret;
 }
